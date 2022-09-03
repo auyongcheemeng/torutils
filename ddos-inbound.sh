@@ -34,7 +34,7 @@ export PATH="/usr/sbin:/usr/bin:/sbin:/bin"
 limit=2
 
 # is the local relay address contained in the ORPort config value ?
-relays=$(grep "^ORPort" /etc/tor/torrc{,2} 2>/dev/null | awk '{ print $2 }' | sort)
+relays=$(grep "^ORPort" /etc/tor/torrc{,*} 2>/dev/null | awk '{ print $2 }' | sort)
 if [[ ! $relays =~ '.' ]]; then
   # no, so get it here
   address=$(grep "^Address" /etc/tor/torrc | awk '{ print $2 }' | sort -u)
